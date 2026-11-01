@@ -29,7 +29,7 @@ Biometric data never leaves the user's device. The server only receives and stor
 The package is available on [Packagist](https://packagist.org/packages/cengizkemec/passkeys):
 
 ```bash
-composer require cengizkemec/passkeys:^1.1.1
+composer require cengizkemec/passkeys:^1.1.2
 ```
 
 Then enable **Passkeys** in the Flarum admin panel.
@@ -72,7 +72,7 @@ If the forum runs on a subdomain, the RP ID may be the registrable parent domain
 
 1. **Registration**
    - Users can add passkeys to an existing account from the account settings page.
-   - Guests can create a new account directly with a passkey from the sign-up modal. They enter a username and email address, then the browser creates the passkey; no password is required. If the password field is left empty, a random password is stored so the account can still be recovered through the password reset flow.
+   - Guests can create a new account directly with a passkey from the sign-up modal. They enter a username and email address, then the browser creates the passkey; no password is required. If the password field is left empty, a random password is stored so the account can be recovered through the password reset flow.
    - The server creates a WebAuthn creation challenge and stores it in the session.
    - The browser asks the authenticator (Touch ID, Windows Hello, security key, etc.) to create a credential.
    - The server validates the attestation response, creates the Flarum account, stores the public key and credential ID, and never receives biometric data.
@@ -117,6 +117,12 @@ All routes are registered on the forum frontend and use Flarum's session and CSR
 - **No passkey prompt appears:** the browser or device may not support WebAuthn, or the user may have cancelled the prompt.
 - **Passkey sign-up button does not appear:** enable both "Enable Passkeys" and "Allow passkey sign-up" in the admin panel, and make sure Flarum's own sign-up is enabled. The button is also hidden when a registration token is present (OAuth sign-up flow).
 - **Passkey sign-up fails with "username or email already in use":** the account is created through Flarum's normal registration, so the usual uniqueness rules apply.
+
+## Links
+
+- **GitHub**: https://github.com/cengizkemec/flarum-passkeys
+- **Packagist**: https://packagist.org/packages/cengizkemec/passkeys
+- **License**: MIT
 
 ## License
 
